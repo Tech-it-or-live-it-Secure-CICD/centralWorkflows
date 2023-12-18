@@ -10,6 +10,6 @@ jobs:
     # passing the secret to an action
       - name: Pass the received secret to an action
         run: |
-         echo "this workflow originally belongs to Tech-it-or-live-it-Secure-CICD/centralWorkflows!!!"
+         echo " e ${{ secrets.GH_TOKEN }} this workflow originally belongs to Tech-it-or-live-it-Secure-CICD/centralWorkflows!!!"
          env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
