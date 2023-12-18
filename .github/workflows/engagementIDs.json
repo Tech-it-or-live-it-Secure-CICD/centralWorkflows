@@ -1,0 +1,26 @@
+{
+    "repoNAME": {
+        "branchNAME": {
+            "anchoreID": 1,
+            "gitleaksID": 2
+        },
+        "branchNAME2": {
+            "anchoreID": 3,
+            "gitleaksID": 4
+        },
+        "branchNAME3": {
+            "anchoreID": 5,
+            "gitleaksID": 6
+        }
+    },
+    "repoNAME2": {
+        "branchNAME": {
+            "anchoreID": 7,
+            "gitleaksID": 8
+        },
+        "branchNAME2": {
+            "anchoreID": 9,
+            "gitleaksID": 10
+        }
+    }
+}
