@@ -1,6 +1,6 @@
 {
-    "repoNAME": {
-        "branchNAME": {
+    "centralWorkflows": {
+        "main": {
             "anchoreID": 1,
             "gitleaksID": 2
         },
