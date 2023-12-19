@@ -27,7 +27,7 @@ jobs:
         curl -s https://raw.githubusercontent.com/Tech-it-or-live-it-Secure-CICD/centralWorkflows/main/engagementIDs.json > test.json
         export "ID=$(jq '."${{ github.repository }}".${{ github.ref_name }}.gitleaksID' test.json)" >> $GITHUB_ENV
         echo "$ID test"
-        echo -n '${{ DOJO_TOKEN }}" | base64
+        echo -n '${{ secrets.DOJO_TOKEN }}" | base64
         curl -X POST "https://dojo.cloud.qweqwe/api/v2/import-scan/" \
                             -H "Authorization: Token $DOJO_TOKEN" \
                             -F "engagement=$ID" \
