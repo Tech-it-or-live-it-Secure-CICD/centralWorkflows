@@ -27,16 +27,26 @@ jobs:
         curl -s https://raw.githubusercontent.com/Tech-it-or-live-it-Secure-CICD/centralWorkflows/main/engagementIDs.json > test.json
         export "ID=$(jq '."${{ github.repository }}".${{ github.ref_name }}.gitleaksID' test.json)" >> $GITHUB_ENV
         echo "$ID test"
-        echo ""${{ secrets.DOJO_TOKEN }}" | base64" | base64
+        echo "$DOJO_TOKEN" | base64
+        curl -X POST "https://dojo.cloud.qweqwe/api/v2/import-scan/" \
+                            -H "Authorization: Token $DOJO_TOKEN" \
+                            -F "engagement=$ID" \
+                            -F "active=true" \
+                            -F "scan_type=Gitleaks Scan" \
+                            -F "minimum_severity=Info" \
+                            -F "skip_duplicates=true" \
+                            -F "close_old_findings=true" \
+                            -F "file=/src/gitleaks-report.json" \
+
 
         
-   - name: post to DDojo
-     uses: ivanamat/defectdojo-import-scan@v1
-     with:
-      token: ${{ secrets.DOJO_TOKEN }}
-      defectdojo_url: ${{ secrets.DEFECTOJO_URL }}
-      file: /src/gitleaks-report.json
-      scan_type: Gitleaks Scan
-      engagement: ${{ secrets.DOJO_TOvKEN }} ${{ secrets.DOJO_TOKEN }}
+  # - name: post to DDojo
+   # uses: ivanamat/defectdojo-import-scan@v1
+   #  with:
+    #  token: ${{ secrets.DOJO_TOKEN }}
+    #  defectdojo_url: ${{ secrets.DEFECTOJO_URL }}
+     # file: /src/gitleaks-report.json
+     # scan_type: Gitleaks Scan
+      #engagement: ${{ secrets.DOJO_TOvKEN }} ${{ secrets.DOJO_TOKEN }}
     
 
