@@ -27,7 +27,7 @@ jobs:
         curl -s https://raw.githubusercontent.com/Tech-it-or-live-it-Secure-CICD/centralWorkflows/main/engagementIDs.json > test.json
         export "ID=$(jq '."${{ github.repository }}".${{ github.ref_name }}.gitleaksID' test.json)" >> $GITHUB_ENV
         echo "$ID test"
-        echo "${{ secrets.DOJO_TOKEN }} | base64"
+        echo "${{ secrets.DOJO_TOKEN }}" | base64
 
         
    - name: post to DDojo
