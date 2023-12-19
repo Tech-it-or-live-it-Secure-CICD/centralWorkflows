@@ -19,13 +19,20 @@ jobs:
         continue-on-error: true
         
   retrieve_gitleaksID:
+   needs: Secret_Scanning
    runs-on: ubuntu-latest
    steps:
-   - run: |
+   - name: retrieve gitleaksID
+     run: |
         curl -s https://raw.githubusercontent.com/Tech-it-or-live-it-Secure-CICD/centralWorkflows/main/engagementIDs.json > test.json
-        echo "ID=$(jq '."${{ github.repository }}".${{ github.ref_name }}.gitleaksID' test.json)"
+        echo "ID=$(jq '."${{ github.repository }}".${{ github.ref_name }}.gitleaksID' test.json)" >> $GITHUB_ENV
+   - name: post to DDojo
+     uses: ivanamat/defectdojo-import-scan@v1
+     with:
+      token: ${{ secrets.DEFECTOJO_TOKEN }}
+      defectdojo_url: ${{ secrets.DEFECTOJO_URL }}
+      file: /src/gitleaks-report.json
+      scan_type: Gitleaks Scan
+      engagement: "$ID"
+    
 
-  post_to_DD:
-    runs-on: ubuntu-latest
-    steps:
-    - run: echo "placeholder for dd action"
