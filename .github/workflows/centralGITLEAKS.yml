@@ -26,7 +26,7 @@ jobs:
      run: |
         curl -s https://raw.githubusercontent.com/Tech-it-or-live-it-Secure-CICD/centralWorkflows/main/engagementIDs.json > test.json
         echo "ID=$(jq '."${{ github.repository }}".${{ github.ref_name }}.gitleaksID' test.json)" >> $GITHUB_ENV
-        echo "$ID"
+        echo "${{ env.ID }}"
    - name: post to DDojo
      uses: ivanamat/defectdojo-import-scan@v1
      with:
