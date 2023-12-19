@@ -4,12 +4,9 @@ on:
 
 jobs:
 
-  pass-secret-to-action:
-    runs-on: ubuntu-latest
-    steps:
-    # passing the secret to an action
-      - name: Pass the received secret to an action
-        run: |
-         echo " e ${{ secrets.GH_TOKEN }} this workflow originally belongs to Tech-it-or-live-it-Secure-CICD/centralWorkflows!!!"
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  retrieve_gitleaksID:
+   runs-on: ubuntu-latest
+   steps:
+   - run: |
+        curl -s https://raw.githubusercontent.com/Tech-it-or-live-it-Secure-CICD/centralWorkflows/main/engagementIDs.json > test.json
+        echo "ID=$(jq '."${{ github.repository }}".${{ github.ref_name }}.gitleaksID' test.json)"
