@@ -38,7 +38,8 @@ jobs:
                             -F "skip_duplicates=true" \
                             -F "close_old_findings=true" \
                             -F "file=/src/gitleaks-report.json" 
-          
+     env:
+      DOJO_TOKEN: ${{ secrets.DOJO_TOKEN }}
 
 
         
