@@ -37,6 +37,6 @@ jobs:
       defectdojo_url: ${{ secrets.DEFECTOJO_URL }}
       file: /src/gitleaks-report.json
       scan_type: Gitleaks Scan
-      engagement: $ID
+      engagement: $IDe
     
 
