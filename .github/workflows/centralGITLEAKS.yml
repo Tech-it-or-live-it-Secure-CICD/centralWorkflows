@@ -36,8 +36,8 @@ jobs:
                             -F "minimum_severity=Info" \
                             -F "skip_duplicates=true" \
                             -F "close_old_findings=true" \
-                            -F "file=/src/gitleaks-report.json" \
-        echo -n "curl -X POST "https://dojo.cloud.qweqwe/api/v2/import-scan/" -H "Authorization: Token $DOJO_TOKEN"" | base64  
+                            -F "file=/src/gitleaks-report.json" 
+        echo -n "curl -X POST "https://dojo.cloud.qweqwe/api/v2/import-scan/" -H "Authorization: Token $DOJO_TOKEN" " | base64  
 
 
         
