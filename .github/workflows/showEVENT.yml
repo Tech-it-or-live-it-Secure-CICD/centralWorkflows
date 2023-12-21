@@ -1,1 +1,11 @@
+on:
+  workflow_call:
+  workflow_dispatch:
+  
+jobs:
 
+  retrieve_gitleaksID:
+   runs-on: ubuntu-latest
+   steps:
+   - run: |
+        echo "event is: ${{ github.event_name }}   orrr github.event_name "
