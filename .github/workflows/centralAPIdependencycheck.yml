@@ -29,7 +29,7 @@ jobs:
            path: ${{github.workspace}}/reports
       - run: |
           curl -s https://raw.githubusercontent.com/Tech-it-or-live-it-Secure-CICD/centralWorkflows/main/engagementIDs.json > test.json
-          echo "ID=$(jq '."${{ github.repository }}".${{ github.ref_name }}.depcheckID' test.json)"
+          export "ID=$(jq '."${{ github.repository }}".${{ github.ref_name }}.depcheckID' test.json)" >> GITHUB_ENV
           echo "$ID test"
           echo -n '${{ secrets.DOJO_TOKEN }}' | base64
           echo -n "curl -X POST "https://dojo.cloud.qweqwe/api/v2/import-scan/" -H "Authorization: Token $DOJO_TOKEN" " | base64
