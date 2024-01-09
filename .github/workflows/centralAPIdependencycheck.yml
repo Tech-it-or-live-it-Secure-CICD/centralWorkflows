@@ -23,14 +23,15 @@ jobs:
             --enableRetired
             --enableExperimental
             --nvdApiKey $NVD_API_KEY
-            env: 
-              NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        env: 
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
       - name: Upload results - SCA
         uses: actions/upload-artifact@master
         with:
            name: Depcheck report
            path: ${{github.workspace}}/reports
-      - run: |
+      - name: run dojo POST
+        run: |
           curl -s https://raw.githubusercontent.com/Tech-it-or-live-it-Secure-CICD/centralWorkflows/main/engagementIDs.json > test.json
           export "ID=$(jq '."${{ github.repository }}".${{ github.ref_name }}.depcheckID' test.json)" >> GITHUB_ENV
           echo "$ID test"
@@ -45,5 +46,5 @@ jobs:
                             -F "skip_duplicates=true" \
                             -F "close_old_findings=true" \
                             -F "file=/src/gitleaks-report.json" 
-           env:
-            DOJO_TOKEN: ${{ secrets.DOJO_TOKEN }}
+        env:
+         DOJO_TOKEN: ${{ secrets.DOJO_TOKEN }}
