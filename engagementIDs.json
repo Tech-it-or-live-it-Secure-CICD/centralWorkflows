@@ -2,7 +2,8 @@
     "Tech-it-or-live-it-Secure-CICD/caller_Alamofire": {
         "main": {
             "anchoreID": 1,
-            "gitleaksID": 2
+            "gitleaksID": 2,
+            "depcheckID": 22
         },
         "branchNAME2": {
             "anchoreID": 3,
