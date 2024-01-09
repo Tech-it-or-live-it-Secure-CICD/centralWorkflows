@@ -22,6 +22,11 @@ jobs:
           args: >
             --enableRetired
             --enableExperimental
+      - name: Upload results - SCA
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: ${{github.workspace}}/reports
       - run: |
           curl -s https://raw.githubusercontent.com/Tech-it-or-live-it-Secure-CICD/centralWorkflows/main/engagementIDs.json > test.json
           echo "ID=$(jq '."${{ github.repository }}".${{ github.ref_name }}.depcheckID' test.json)"
