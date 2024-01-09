@@ -22,7 +22,9 @@ jobs:
           args: >
             --enableRetired
             --enableExperimental
-            --nvdApiKey 123
+            --nvdApiKey $NVD_API_KEY
+            env: 
+              NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
       - name: Upload results - SCA
         uses: actions/upload-artifact@master
         with:
