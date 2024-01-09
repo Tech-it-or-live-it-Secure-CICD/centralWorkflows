@@ -22,6 +22,7 @@ jobs:
           args: >
             --enableRetired
             --enableExperimental
+            --apiKey="123"
       - name: Upload results - SCA
         uses: actions/upload-artifact@master
         with:
