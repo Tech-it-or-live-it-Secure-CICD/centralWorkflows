@@ -13,9 +13,9 @@ jobs:
         id: set_flag
         run: echo "::set-output name=is_odd_minute::$(($(date +%M) % 2))"
       - name: step1
-        if: (github.event_name == 'workflow_dispatch' && steps.set_flag.outputs.is_odd_minute == '1')
+        if: (steps.set_flag.outputs.is_odd_minute == '1')
         run: echo "this is an odd minute"
       - name: step2
-        if: (github.event_name == 'workflow_dispatch' && steps.set_flag.outputs.is_odd_minute == '0' )
+        if: (steps.set_flag.outputs.is_odd_minute == '0' )
         run: echo "this is NOT AN odd minute"
      
