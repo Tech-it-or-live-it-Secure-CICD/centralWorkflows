@@ -16,6 +16,6 @@ jobs:
         if: (github.event_name == 'workflow_dispatch' && steps.set_flag.outputs.is_odd_minute == '1')
         run: echo "this is an odd minute"
       - name: step2
-        if: (github.event_name == 'workflow_dispatch' && ${{ !steps.set_flag.outputs.is_odd_minute == '1' }})
+        if: (github.event_name == 'workflow_dispatch' && steps.set_flag.outputs.is_odd_minute == '0' )
         run: echo "this is NOT AN odd minute"
      
