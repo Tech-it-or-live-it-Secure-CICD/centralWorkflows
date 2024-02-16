@@ -80,7 +80,6 @@ jobs:
                    ## --save-report-json="report.json" \
      - name: run dojo POST
        run: |
-          curl -s https://raw.githubusercontent.com/Tech-it-or-live-it-Secure-CICD/centralWorkflows/main/engagementIDs.json > test.json
 
           export "SCAN_DATE=$(TZ='EET' date '+%Y-%m-%d')"
 
@@ -88,7 +87,7 @@ jobs:
                             -H "Authorization: Token $DOJO_TOKEN" \
                             -F "engagement=23" \
                             -F "active=true" \
-                            -F "scan_type=SonarQube Scan detailed \
+                            -F "scan_type=SonarQube Scan detailed" \
                             -F "minimum_severity=Info" \
                             -F "skip_duplicates=true" \
                             -F "close_old_findings=true" \
