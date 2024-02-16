@@ -66,15 +66,15 @@ jobs:
      - name: Install Dependencies (sonar-report) and run it
        run: |
          npm install -g sonar-report
-         echo "PROJECTKEY=${{ github.repository_owner}}_$(echo ${{ github.repository }} | sed 's/.*\///')" >> $GITHUB_ENV
+         export "PROJECTKEY=${{ github.repository_owner}}_$(echo ${{ github.repository }} | sed 's/.*\///')"
          sonar-report \
            --sonarurl="https://sonarcloud.io" \
            --sonarorganization="testingorgcs" \
            --branch="main" \
            --sonartoken="${{ secrets.SONAR_TOKEN }}" \
            --output sonarreport.html \
-           --application="${{ env.PROJECTKEY }}" \
-           --sonarcomponent="${{ env.PROJECTKEY }}"
+           --application="$PROJECTKEY" \
+           --sonarcomponent="$PROJECTKEY"
        env:
          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
                    ## --save-report-json="report.json" \
