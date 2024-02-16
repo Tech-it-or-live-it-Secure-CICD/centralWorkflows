@@ -68,8 +68,8 @@ jobs:
          npm install -g sonar-report
          sonar-report \
            --sonarurl="https://sonarcloud.io" \
-           --sonarorganization="${{ github.repository_owner}}" \
-           --branch="${{ github.head_ref }}" \
+           --sonarorganization="testingorgcs" \
+           --branch="main" \
            --sonartoken="${{ secrets.SONAR_TOKEN }}" \
            --output sonarreport.html \
            --application="${{ github.repository }}" \
