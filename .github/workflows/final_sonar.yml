@@ -52,7 +52,7 @@ jobs:
      - name: Use Node.js 
        uses: actions/setup-node@v4
        with:
-        node-version: node
+        node-version: 20
       #  cache: 'npm'
         
    #  - name: Cache npm dependencies
@@ -80,10 +80,9 @@ jobs:
      - name: run dojo POST
        run: |
           curl -s https://raw.githubusercontent.com/Tech-it-or-live-it-Secure-CICD/centralWorkflows/main/engagementIDs.json > test.json
-          export "ID=$(jq '."${{ github.repository }}".${{ github.ref_name }}.depcheckID' test.json)" >> GITHUB_ENV
+
           export "SCAN_DATE=$(TZ='EET' date '+%Y-%m-%d')"
-          
-          echo -n "curl -X POST "https://demo.defectdojo.org/api/v2/import-scan/" -H "Authorization: Token $DOJO_TOKEN" " | base64
+
           curl -X POST "https://demo.defectdojo.org/api/v2/import-scan/" \
                             -H "Authorization: Token $DOJO_TOKEN" \
                             -F "engagement=23" \
