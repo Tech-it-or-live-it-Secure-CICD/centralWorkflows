@@ -12,5 +12,5 @@ jobs:
         echo " github repo_owner is: ${{ github.repository_owner}}     "
         echo " github repo is: ${{ github.repository }}"
         echo " github ref_name is: ${{ github.ref_name }}"
-        export ENG=SecretScanning - ${{ github.repository }}-main
+        export "ENG=SecretScanning - ${{ github.repository }}-main"
         echo "eng is: $ENG"
